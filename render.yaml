@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-agent-pencatatan
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GOOGLE_SHEET_ID
+        sync: false
+      - key: GOOGLE_SERVICE_EMAIL
+        sync: false
+      - key: GOOGLE_PRIVATE_KEY
+        sync: false
