@@ -32,26 +32,18 @@ function getBrowserPath() {
 const client = new Client({
   authStrategy: new LocalAuth({
     clientId: 'ai-agent-pencatatan',
-    dataPath: path.join(__dirname, '..', '..', 'wa-session')
+    dataPath: path.join('/tmp', 'wa-session')
   }),
   puppeteer: {
-    executablePath: getBrowserPath(),
     headless: true,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-gpu',
       '--disable-dev-shm-usage',
-      '--disable-web-security',
-      '--disable-features=IsolateOrigins,site-per-process',
-      '--flag-switches-begin --disable-site-isolation-trials --flag-switches-end'
+      '--remote-debugging-port=9222'
     ],
-    ignoreHTTPSErrors: true,
-    defaultViewport: null
-  },
-  webVersionCache: {
-    type: 'remote',
-    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
+    executablePath: '/usr/bin/google-chrome-stable' // Sesuaikan path Chrome
   }
 });
 
